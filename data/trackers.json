@@ -1,0 +1,49 @@
+{
+  "trackers": [
+    {
+      "id": "1",
+      "name": "Gym (upper body)",
+      "subscribedDays": [
+        6,
+        21,
+        28,
+        3,
+        12
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Stretching (hips)",
+      "subscribedDays": [
+        20,
+        22,
+        2,
+        17
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Headaches",
+      "subscribedDays": [
+        15,
+        20,
+        25,
+        29,
+        5
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Iboprufen",
+      "subscribedDays": [
+        4,
+        1,
+        17,
+        12,
+        6,
+        14,
+        21
+      ]
+    }
+  ]
+}
