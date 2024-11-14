@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "jsonserver": "npx json-server data/trackers.json -p 3500"
+    "lint": "next lint"
   },
   "dependencies": {
     "json-server": "^1.0.0-beta.3",
+    "lucide-react": "^0.456.0",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.1",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106"

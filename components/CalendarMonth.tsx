@@ -5,6 +5,7 @@ import removeCalendarDay from '@/app/actions/removeCalendarDay';
 import { useRouter } from 'next/navigation';
 import generateMonth from '@/utils/generateMonth';
 import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const CalendarMonth = ({ tracker }: any) => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
@@ -13,8 +14,9 @@ const CalendarMonth = ({ tracker }: any) => {
 
   const dateToday = new Date().toLocaleDateString();
 
-  const dayClassAttributes = 'w-14 m-0.5 text-sm pb-1';
-  const boxClassAttributes = 'h-14 w-14 m-0.5 hover:cursor-grab p-1 rounded-md';
+  const dayClassAttributes = 'w-11 md:w-14 m-0.5 text-sm pb-1';
+  const boxClassAttributes =
+    'h-11 w-11 md:h-14 md:w-14 m-0.5 hover:cursor-grab p-1 rounded-md';
 
   const monthDayStart =
     new Date(selectedYear, selectedMonth - 1, 1).getDay() === 0
@@ -41,6 +43,9 @@ const CalendarMonth = ({ tracker }: any) => {
     <>
       <div className="flex justify-center">
         <div className="border rounded-md shadow-md p-3">
+          <h1 className="mb-3 font-bold text-lg text-center">
+            {tracker.title}
+          </h1>
           <div className="flex justify-evenly">
             <button
               onClick={() =>
@@ -48,11 +53,11 @@ const CalendarMonth = ({ tracker }: any) => {
                   ? (setSelectedYear(selectedYear - 1), setSelectedMonth(12))
                   : setSelectedMonth(selectedMonth - 1)
               }
-              className="btn text-center"
+              className="btn btn-circle btn-ghost"
             >
-              prev
+              <ChevronLeft />
             </button>
-            <div className="text-center pb-3 underline">
+            <div className="text-center underline my-auto">
               {selectedMonth}/{selectedYear}
             </div>
             <button
@@ -61,9 +66,9 @@ const CalendarMonth = ({ tracker }: any) => {
                   ? (setSelectedYear(selectedYear + 1), setSelectedMonth(1))
                   : setSelectedMonth(selectedMonth + 1)
               }
-              className="btn text-center"
+              className="btn btn-circle btn-ghost"
             >
-              next
+              <ChevronRight />
             </button>
           </div>
           <div className="grid grid-cols-7 gap-0 w-fit text-center">
@@ -91,7 +96,7 @@ const CalendarMonth = ({ tracker }: any) => {
                   }`,
                   backgroundColor: `${
                     day === 0
-                      ? 'inherit'
+                      ? ''
                       : tracker.subscribedDays.includes(
                           Date.parse(`${selectedYear}-${selectedMonth}-${day}`)
                         )

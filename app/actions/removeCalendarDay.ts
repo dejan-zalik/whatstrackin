@@ -1,19 +1,17 @@
 'use server';
 
+import connectDB from '@/config/database';
+import Tracker from '@/models/Tracker';
+
 const removeCalendarDay = async (tracker: any, day: number) => {
-  const res = await fetch(`http://localhost:3500/trackers/${tracker.id}`);
-  const updateTracker = await res.json();
+  await connectDB();
+
+  const updateTracker = await Tracker.findById(tracker._id);
 
   const index = updateTracker.subscribedDays.indexOf(day);
   updateTracker.subscribedDays.splice(index, 1);
 
-  await fetch(`http://localhost:3500/trackers/${tracker.id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(updateTracker),
-  });
+  await Tracker.findByIdAndUpdate(tracker._id, updateTracker);
 };
 
 export default removeCalendarDay;

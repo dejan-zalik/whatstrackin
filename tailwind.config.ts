@@ -11,6 +11,6 @@ module.exports = {
   },
   plugins: [daisyui],
   daisyui: {
-    themes: ['nord'],
+    themes: ['retro'],
   },
 };
