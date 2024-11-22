@@ -1,15 +1,10 @@
-import addTracker from '@/app/actions/addTracker';
+import editTracker from '@/app/actions/editTracker';
 import { useState } from 'react';
 import TrackerLoader from '@/components/TrackerLoader';
 
-const AddTracker = () => {
-  const [titleText, setTitleText] = useState('');
-
-  const handleButtonClick = () => {
-    setTimeout(() => {
-      setTitleText('');
-    }, 100);
-  };
+const EditTracker = ({ tracker }: any) => {
+  const [titleText, setTitleText] = useState(tracker.title);
+  const editTrackerWithId = editTracker.bind(null, tracker._id);
 
   return (
     <>
@@ -20,10 +15,10 @@ const AddTracker = () => {
               e.preventDefault();
             }
           }}
-          action={addTracker}
+          action={editTrackerWithId}
           className="grid grid-cols-1"
         >
-          <h1 className="mt-6 mx-auto">what do you want to track?</h1>
+          <h1 className="mt-6 mx-auto">edit tracker title below:</h1>
           <input
             type="text"
             value={titleText}
@@ -41,10 +36,9 @@ const AddTracker = () => {
                     e.preventDefault();
                   }
                 }}
-                onClick={() => handleButtonClick()}
                 className="btn btn-ghost shadow-md rounded-xl border font-bold"
               >
-                add
+                edit
               </button>
             </div>
           </div>
@@ -55,4 +49,4 @@ const AddTracker = () => {
   );
 };
 
-export default AddTracker;
+export default EditTracker;

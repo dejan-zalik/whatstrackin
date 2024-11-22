@@ -4,13 +4,15 @@ import addCalendarDay from '@/app/actions/addCalendarDay';
 import removeCalendarDay from '@/app/actions/removeCalendarDay';
 import { useRouter } from 'next/navigation';
 import generateMonth from '@/utils/generateMonth';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { LoadingContext } from '@/context/LoadingContext';
 
 const CalendarMonth = ({ tracker }: any) => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
   const router = useRouter();
+  const { setIsLoading } = useContext(LoadingContext);
 
   const dateToday = new Date().toLocaleDateString();
 
@@ -38,6 +40,10 @@ const CalendarMonth = ({ tracker }: any) => {
       router.refresh();
     }
   };
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   return (
     <>

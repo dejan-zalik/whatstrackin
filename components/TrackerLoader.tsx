@@ -3,15 +3,18 @@
 import { LoaderCircle } from 'lucide-react';
 import { useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
+import { usePathname } from 'next/navigation';
 
-const AddTrackerLoader = () => {
+const TrackerLoader = () => {
   const { pending } = useFormStatus();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!pending) {
-      const element = document.getElementById(
-        'modalAddTracker'
-      ) as HTMLDialogElement;
+      const element =
+        pathname === '/trackers'
+          ? (document.getElementById('modalAddTracker') as HTMLDialogElement)
+          : (document.getElementById('modalEditTracker') as HTMLDialogElement);
       element.close();
     }
   }, [pending]);
@@ -29,4 +32,4 @@ const AddTrackerLoader = () => {
   );
 };
 
-export default AddTrackerLoader;
+export default TrackerLoader;
