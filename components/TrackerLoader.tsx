@@ -15,7 +15,7 @@ const TrackerLoader = () => {
         pathname === '/trackers'
           ? (document.getElementById('modalAddTracker') as HTMLDialogElement)
           : (document.getElementById('modalEditTracker') as HTMLDialogElement);
-      element.close();
+      if (element) element.close();
     }
   }, [pending]);
 

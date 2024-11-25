@@ -29,6 +29,7 @@ const AddTracker = () => {
             value={titleText}
             onChange={(e) => setTitleText(e.target.value)}
             required
+            autoFocus
             name="title"
             placeholder="type here"
             className="input text-sm rounded-xl shadow-md w-full max-w-xs my-6 m-auto"

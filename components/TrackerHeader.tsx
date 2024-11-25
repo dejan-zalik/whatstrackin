@@ -16,7 +16,7 @@ const TrackerHeader = ({ tracker }: any) => {
           <ArrowLeftToLine />
         </Link>
         <button
-          className="btn btn-circle btn-ghost mx-1 text-[#3b82f6]"
+          className="btn btn-circle btn-ghost ml-1 text-[#3b82f6]"
           title="edit"
           onClick={() => {
             const element = document.getElementById(

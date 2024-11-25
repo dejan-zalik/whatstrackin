@@ -5,12 +5,14 @@ import removeCalendarDay from '@/app/actions/removeCalendarDay';
 import { useRouter } from 'next/navigation';
 import generateMonth from '@/utils/generateMonth';
 import { useState, useEffect, useContext } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, LoaderCircle } from 'lucide-react';
 import { LoadingContext } from '@/context/LoadingContext';
 
 const CalendarMonth = ({ tracker }: any) => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
+  const [dayIsClicked, setDayIsClicked] = useState(false);
+  const [dayIndex, setDayIndex] = useState<number>();
   const router = useRouter();
   const { setIsLoading } = useContext(LoadingContext);
 
@@ -30,15 +32,19 @@ const CalendarMonth = ({ tracker }: any) => {
     selectedMonthArr.unshift(0);
   }
 
-  const handleDayClick = (day: number) => {
+  const handleDayClick = async (index: number, day: number) => {
+    setDayIndex(index);
+    setDayIsClicked(true);
     const subscribedDay = Date.parse(`${selectedYear}-${selectedMonth}-${day}`);
     if (tracker.subscribedDays.includes(subscribedDay)) {
-      removeCalendarDay(tracker, subscribedDay);
+      await removeCalendarDay(tracker, subscribedDay);
       router.refresh();
     } else {
-      addCalendarDay(tracker, subscribedDay);
+      await addCalendarDay(tracker, subscribedDay);
       router.refresh();
     }
+
+    setDayIsClicked(false);
   };
 
   useEffect(() => {
@@ -110,9 +116,17 @@ const CalendarMonth = ({ tracker }: any) => {
                       : '#3b82f6'
                   }`,
                 }}
-                onClick={() => handleDayClick(day)}
+                onClick={() => handleDayClick(index, day)}
               >
-                {day === 0 ? '' : day}
+                {dayIsClicked && dayIndex === index ? (
+                  <div className="h-full w-full flex justify-center items-center">
+                    <LoaderCircle size={32} className="animate-spin" />
+                  </div>
+                ) : day === 0 ? (
+                  ''
+                ) : (
+                  day
+                )}
               </div>
             ))}
           </div>
