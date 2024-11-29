@@ -62,7 +62,7 @@ const Navbar = () => {
               <div className="w-1/3 flex justify-end">
                 <button
                   title="sign out"
-                  onClick={() => signOut()}
+                  onClick={() => signOut({ callbackUrl: '/' })}
                   className="btn btn-ghost btn-circle mr-1"
                 >
                   <LogOut />

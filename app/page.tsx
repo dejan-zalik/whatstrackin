@@ -13,7 +13,7 @@ const LandingPage = () => {
     <>
       <div className="block m-12">
         <div className="text-center m-12">
-          <Link href={'trackers'} className="btn btn-square">
+          <Link href={'/trackers'} className="btn btn-square">
             temp
           </Link>
         </div>
