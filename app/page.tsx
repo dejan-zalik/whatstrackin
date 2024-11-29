@@ -1,6 +1,14 @@
+'use client';
+
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
 
 const LandingPage = () => {
+  useEffect(() => {
+    redirect('/trackers');
+  });
+
   return (
     <>
       <div className="block m-12">
@@ -11,7 +19,7 @@ const LandingPage = () => {
         </div>
         <div className="text-center">create</div>
         <div className="text-center">track</div>
-        <div className="text-center">compare</div>
+        <div className="text-center">analytics</div>
       </div>
     </>
   );

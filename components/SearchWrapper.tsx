@@ -26,7 +26,7 @@ const SearchWrapper = ({ trackers }: any) => {
         />
       </div>
       <div className="container m-auto py-6 px-6">
-        {trackers.length === 0 ? (
+        {filteredTrackers.length === 0 ? (
           <>
             <p>No trackers found</p>
           </>

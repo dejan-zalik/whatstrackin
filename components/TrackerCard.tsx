@@ -23,31 +23,33 @@ const TrackerCard = ({ tracker }: any) => {
 
   return (
     <>
-      <div className="relative">
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            handleDeleteTracker();
-          }}
-          className="btn btn-circle ml-1 text-red-500 absolute -right-4 -top-4"
-          title="delete"
-        >
-          <Trash2 />
-        </button>
-        <Link
-          href={`/trackers/${tracker._id}`}
-          onClick={() => {
-            setIsLoading(true);
-          }}
-        >
-          <div className="rounded-xl shadow-md bg-secondary hover:rounded-xl hover:shadow-2xl">
-            <div className="p-4">
-              <div className="text-left md:text-center lg:text-left my-3">
-                <h3 className="text-xl font-bold">{tracker.title}</h3>
+      <div className="content-center">
+        <div className="relative">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleDeleteTracker();
+            }}
+            className="btn btn-circle ml-1 text-red-500 absolute -right-4 -top-4"
+            title="delete"
+          >
+            <Trash2 />
+          </button>
+          <Link
+            href={`/trackers/${tracker._id}`}
+            onClick={() => {
+              setIsLoading(true);
+            }}
+          >
+            <div className="rounded-xl shadow-md bg-secondary hover:rounded-xl hover:shadow-2xl">
+              <div className="p-4">
+                <div className="text-center my-3">
+                  <h3 className="text-xl font-bold">{tracker.title}</h3>
+                </div>
               </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
     </>
   );

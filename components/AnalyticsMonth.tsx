@@ -8,7 +8,7 @@ import { useState, useEffect, useContext } from 'react';
 import { ChevronLeft, ChevronRight, LoaderCircle } from 'lucide-react';
 import { LoadingContext } from '@/context/LoadingContext';
 
-const CalendarMonth = ({ tracker }: any) => {
+const AnalyticsMonth = () => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
   const [dayIsClicked, setDayIsClicked] = useState(false);
@@ -32,32 +32,11 @@ const CalendarMonth = ({ tracker }: any) => {
     selectedMonthArr.unshift(0);
   }
 
-  const handleDayClick = async (index: number, day: number) => {
-    setDayIndex(index);
-    setDayIsClicked(true);
-    const subscribedDay = Date.parse(`${selectedYear}-${selectedMonth}-${day}`);
-    if (tracker.subscribedDays.includes(subscribedDay)) {
-      await removeCalendarDay(tracker, subscribedDay);
-      router.refresh();
-    } else {
-      await addCalendarDay(tracker, subscribedDay);
-      router.refresh();
-    }
-
-    setDayIsClicked(false);
-  };
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
   return (
     <>
       <div className="flex justify-center">
         <div className="border rounded-md shadow-md p-3">
-          <h1 className="mb-3 font-bold text-lg text-center">
-            {tracker.title}
-          </h1>
+          <h1 className="mb-3 font-bold text-lg text-center">placeholder</h1>
           <div className="flex justify-evenly">
             <button
               onClick={() =>
@@ -106,28 +85,9 @@ const CalendarMonth = ({ tracker }: any) => {
                       ? 'dotted'
                       : ''
                   }`,
-                  backgroundColor: `${
-                    day === 0
-                      ? ''
-                      : tracker.subscribedDays.includes(
-                          Date.parse(`${selectedYear}-${selectedMonth}-${day}`)
-                        )
-                      ? '#22c55e'
-                      : '#3b82f6'
-                  }`,
+                  backgroundColor: `${day === 0 ? '' : '#3b82f6'}`,
                 }}
-                onClick={() => handleDayClick(index, day)}
-              >
-                {dayIsClicked && dayIndex === index ? (
-                  <div className="h-full w-full flex justify-center items-center">
-                    <LoaderCircle size={32} className="animate-spin" />
-                  </div>
-                ) : day === 0 ? (
-                  ''
-                ) : (
-                  day
-                )}
-              </div>
+              ></div>
             ))}
           </div>
         </div>
@@ -136,4 +96,4 @@ const CalendarMonth = ({ tracker }: any) => {
   );
 };
 
-export default CalendarMonth;
+export default AnalyticsMonth;

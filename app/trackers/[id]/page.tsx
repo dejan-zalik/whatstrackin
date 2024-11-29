@@ -1,4 +1,4 @@
-import CalendarMonth from '@/components/CalendarMonth';
+import TrackerMonth from '@/components/TrackerMonth';
 import connectDB from '@/config/database';
 import Tracker from '@/models/Tracker';
 import convertToSerializableObject from '@/utils/convertToSerializableObject';
@@ -18,7 +18,7 @@ const TrackerPage = async (props: { params: Params }) => {
     <>
       <section>
         <TrackerHeader tracker={tracker} />
-        <CalendarMonth tracker={tracker} />
+        <TrackerMonth tracker={tracker} />
       </section>
     </>
   );

@@ -14,13 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="max-w-3xl m-auto">
-        <Providers>
+    <Providers>
+      <html lang="en">
+        <body className="max-w-3xl m-auto">
           <Navbar />
           <main>{children}</main>
-        </Providers>
-      </body>
-    </html>
+        </body>
+      </html>
+    </Providers>
   );
 }
