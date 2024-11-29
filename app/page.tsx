@@ -5,9 +5,9 @@ import { useEffect } from 'react';
 import { redirect } from 'next/navigation';
 
 const LandingPage = () => {
-  //   useEffect(() => {
-  //     redirect('/trackers');
-  //   });
+  useEffect(() => {
+    redirect('/trackers');
+  });
 
   return (
     <>
