@@ -101,7 +101,7 @@ const Navbar = () => {
                   key={provider.id}
                   onClick={() =>
                     // @ts-ignore
-                    signIn(provider.id, { callbackUrl: '/trackers' })
+                    signIn(provider.id)
                   }
                   className="btn btn-ghost flex items-center rounded-md px-3 py-2 shadow-md"
                 >
