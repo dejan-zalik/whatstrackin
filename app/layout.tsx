@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Providers } from '@/context/Providers';
+import AuthProvider from '@/components/AuthProvider';
 
 export const metadata: Metadata = {
   title: 'whatstrackin',
@@ -14,13 +15,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Providers>
+    <AuthProvider>
       <html lang="en">
         <body className="max-w-3xl m-auto">
-          <Navbar />
-          <main>{children}</main>
+          <Providers>
+            <Navbar />
+            <main>{children}</main>
+          </Providers>
         </body>
       </html>
-    </Providers>
+    </AuthProvider>
   );
 }
