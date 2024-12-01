@@ -1,25 +1,18 @@
 'use client';
 
-import Link from 'next/link';
-import { useEffect } from 'react';
-import { redirect } from 'next/navigation';
+import LandingPageCreate from '@/components/LandingPageCreate';
+import LandingPageTrack from '@/components/LandingPageTrack';
+import LandingPageAnalyze from '@/components/LandingPageAnalyze';
 
 const LandingPage = () => {
-  //   useEffect(() => {
-  //     redirect('/trackers');
-  //   });
-
   return (
     <>
-      <div className="block m-12">
-        <div className="text-center m-12">
-          <Link href={'/trackers'} className="btn btn-square">
-            temp
-          </Link>
+      <div className="container flex justify-center my-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <LandingPageCreate />
+          <LandingPageTrack />
+          <LandingPageAnalyze />
         </div>
-        <div className="text-center">create</div>
-        <div className="text-center">track</div>
-        <div className="text-center">analytics</div>
       </div>
     </>
   );
