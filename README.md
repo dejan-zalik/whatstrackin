@@ -1,1 +1,1 @@
-deployed at whatstrackin.vercel.app
+deployed at: https://whatstrackin.vercel.app
