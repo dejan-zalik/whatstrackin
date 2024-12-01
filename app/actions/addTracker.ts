@@ -26,8 +26,6 @@ const addTracker = async (formData: FormData) => {
     subscribedDays: [],
   };
 
-  console.log(trackerData);
-
   const newTracker = new Tracker(trackerData);
 
   await newTracker.save();

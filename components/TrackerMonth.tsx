@@ -19,8 +19,7 @@ const TrackerMonth = ({ tracker }: any) => {
   const dateToday = new Date().toLocaleDateString();
 
   const dayClassAttributes = 'w-11 md:w-14 m-0.5 text-sm pb-1';
-  const boxClassAttributes =
-    'h-11 w-11 md:h-14 md:w-14 m-0.5 hover:cursor-grab p-1 rounded-md';
+  const boxClassAttributes = 'h-11 w-11 md:h-14 md:w-14 m-0.5 p-1 rounded-md';
 
   const monthDayStart =
     new Date(selectedYear, selectedMonth - 1, 1).getDay() === 0
@@ -33,6 +32,7 @@ const TrackerMonth = ({ tracker }: any) => {
   }
 
   const handleDayClick = async (index: number, day: number) => {
+    if (day === 0) return;
     setDayIndex(index);
     setDayIsClicked(true);
     const subscribedDay = Date.parse(`${selectedYear}-${selectedMonth}-${day}`);
@@ -115,6 +115,7 @@ const TrackerMonth = ({ tracker }: any) => {
                       ? '#22c55e'
                       : '#3b82f6'
                   }`,
+                  cursor: `${day === 0 ? '' : 'grab'}`,
                 }}
                 onClick={() => handleDayClick(index, day)}
               >
