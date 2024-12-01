@@ -15,6 +15,14 @@ const Navbar = () => {
 
   const pathname = usePathname();
 
+  const handleSignOut = () => {
+    const confirmed = window.confirm('Do you want to sign out?');
+
+    if (!confirmed) return;
+
+    signOut({ callbackUrl: '/' });
+  };
+
   useEffect(() => {
     const setAuthProviders = async () => {
       const res = await getProviders();
@@ -62,7 +70,7 @@ const Navbar = () => {
               <div className="w-1/3 flex justify-end">
                 <button
                   title="sign out"
-                  onClick={() => signOut({ callbackUrl: '/' })}
+                  onClick={() => handleSignOut()}
                   className="btn btn-ghost btn-circle mr-1"
                 >
                   <LogOut />
