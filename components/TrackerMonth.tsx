@@ -35,7 +35,9 @@ const TrackerMonth = ({ tracker }: any) => {
     if (day === 0) return;
     setDayIndex(index);
     setDayIsClicked(true);
-    const subscribedDay = Date.parse(`${selectedYear}-${selectedMonth}-${day}`);
+    const subscribedDay = Date.parse(
+      `${selectedYear}-${selectedMonth}-${day < 10 ? '0' + day : day}`
+    );
     if (tracker.subscribedDays.includes(subscribedDay)) {
       await removeCalendarDay(tracker, subscribedDay);
       router.refresh();
@@ -101,7 +103,9 @@ const TrackerMonth = ({ tracker }: any) => {
                 style={{
                   border: `${
                     new Date(
-                      `${selectedYear}-${selectedMonth}-${day}`
+                      `${selectedYear}-${selectedMonth}-${
+                        day < 10 ? '0' + day : day
+                      }`
                     ).toLocaleDateString() === dateToday
                       ? 'dotted'
                       : ''
@@ -110,7 +114,11 @@ const TrackerMonth = ({ tracker }: any) => {
                     day === 0
                       ? ''
                       : tracker.subscribedDays.includes(
-                          Date.parse(`${selectedYear}-${selectedMonth}-${day}`)
+                          Date.parse(
+                            `${selectedYear}-${selectedMonth}-${
+                              day < 10 ? '0' + day : day
+                            }`
+                          )
                         )
                       ? '#22c55e'
                       : '#3b82f6'
