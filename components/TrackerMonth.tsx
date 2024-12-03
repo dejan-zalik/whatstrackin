@@ -36,7 +36,9 @@ const TrackerMonth = ({ tracker }: any) => {
     setDayIndex(index);
     setDayIsClicked(true);
     const subscribedDay = Date.parse(
-      `${selectedYear}-${selectedMonth}-${day < 10 ? '0' + day : day}`
+      `${selectedYear}-${
+        selectedMonth < 10 ? '0' + selectedMonth : selectedMonth
+      }-${day < 10 ? '0' + day : day}`
     );
     if (tracker.subscribedDays.includes(subscribedDay)) {
       await removeCalendarDay(tracker, subscribedDay);
@@ -72,7 +74,8 @@ const TrackerMonth = ({ tracker }: any) => {
               <ChevronLeft />
             </button>
             <div className="text-center underline my-auto">
-              {selectedMonth}/{selectedYear}
+              {selectedMonth < 10 ? '0' + selectedMonth : selectedMonth}/
+              {selectedYear}
             </div>
             <button
               onClick={() =>
@@ -103,9 +106,9 @@ const TrackerMonth = ({ tracker }: any) => {
                 style={{
                   border: `${
                     new Date(
-                      `${selectedYear}-${selectedMonth}-${
-                        day < 10 ? '0' + day : day
-                      }`
+                      `${selectedYear}-${
+                        selectedMonth < 10 ? '0' + selectedMonth : selectedMonth
+                      }-${day < 10 ? '0' + day : day}`
                     ).toLocaleDateString() === dateToday
                       ? 'dotted'
                       : ''
@@ -115,9 +118,11 @@ const TrackerMonth = ({ tracker }: any) => {
                       ? ''
                       : tracker.subscribedDays.includes(
                           Date.parse(
-                            `${selectedYear}-${selectedMonth}-${
-                              day < 10 ? '0' + day : day
-                            }`
+                            `${selectedYear}-${
+                              selectedMonth < 10
+                                ? '0' + selectedMonth
+                                : selectedMonth
+                            }-${day < 10 ? '0' + day : day}`
                           )
                         )
                       ? '#22c55e'

@@ -17,7 +17,7 @@ const LandingPageCreate = () => {
         </div>
         <div className="content-center m-6">
           <div className="relative">
-            <button className="btn btn-circle ml-1 text-red-500 absolute -right-4 -top-4">
+            <button className="btn btn-circle text-red-500 absolute -right-5 -top-5 md:-right-4 md:-top-4">
               <Trash2 />
             </button>
             <div className="rounded-xl shadow-md bg-secondary hover:rounded-xl hover:shadow-2xl hover:cursor-pointer">
@@ -31,7 +31,7 @@ const LandingPageCreate = () => {
         </div>
         <div className="content-center m-6">
           <div className="relative">
-            <button className="btn btn-circle ml-1 text-red-500 absolute -right-4 -top-4">
+            <button className="btn btn-circle text-red-500 absolute -right-5 -top-5 md:-right-4 md:-top-4">
               <Trash2 />
             </button>
             <div className="rounded-xl shadow-md bg-secondary hover:rounded-xl hover:shadow-2xl hover:cursor-pointer">
@@ -45,7 +45,7 @@ const LandingPageCreate = () => {
         </div>
         <div className="content-center m-6">
           <div className="relative">
-            <button className="btn btn-circle ml-1 text-red-500 absolute -right-4 -top-4">
+            <button className="btn btn-circle text-red-500 absolute -right-5 -top-5 md:-right-4 md:-top-4">
               <Trash2 />
             </button>
             <div className="rounded-xl shadow-md bg-secondary hover:rounded-xl hover:shadow-2xl hover:cursor-pointer">

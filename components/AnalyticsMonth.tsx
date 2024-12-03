@@ -11,8 +11,6 @@ import { LoadingContext } from '@/context/LoadingContext';
 const AnalyticsMonth = () => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
-  const [dayIsClicked, setDayIsClicked] = useState(false);
-  const [dayIndex, setDayIndex] = useState<number>();
   const router = useRouter();
   const { setIsLoading } = useContext(LoadingContext);
 
@@ -36,7 +34,6 @@ const AnalyticsMonth = () => {
     <>
       <div className="flex justify-center">
         <div className="border rounded-md shadow-md p-3">
-          <h1 className="mb-3 font-bold text-lg text-center">placeholder</h1>
           <div className="flex justify-evenly">
             <button
               onClick={() =>
