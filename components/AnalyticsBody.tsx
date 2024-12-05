@@ -2,47 +2,38 @@
 
 import AnalyticsMonth from '@/components/AnalyticsMonth';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const AnalyticsBody = ({ trackers }: any) => {
   const [selectedTrackers, setSelectedTrackers] = useState<any>([]);
 
-  console.log(selectedTrackers);
+  const handleTrackerSelect = (tracker: any) => {
+    setSelectedTrackers((prevState: any) => {
+      const index = prevState.findIndex(
+        (item: any) => item._id === tracker._id
+      );
 
-  const handleTrackerSelect = (trackerId: number) => {
-    selectedTrackers.map((tracker: any) => {
-      if (tracker._id === trackerId) {
-        tracker.selected = !tracker.selected;
+      if (index === -1) {
+        if (selectedTrackers.length > 3) {
+          const customId = 'this-will-prevent-duplicate-toast-popup';
+          toast.warn('you can only use 4 at a time', {
+            toastId: customId,
+          });
+          return [...prevState];
+        } else {
+          return [...prevState, tracker];
+        }
+      } else {
+        const updatedTrackers = [...prevState];
+        updatedTrackers.splice(index, 1);
+        return updatedTrackers;
       }
     });
-
-    setSelectedTrackers(selectedTrackers);
-
-    console.log(selectedTrackers);
-
-    // if (selectedTrackers.includes(trackerId)) {
-    //   const trackerIndex = selectedTrackers.indexOf(trackerId);
-    //   selectedTrackers.splice(trackerIndex, 1);
-    //   setSelectedTrackers(selectedTrackers);
-    //   return;
-    // }
-    // if (selectedTrackers.length === 4) {
-    //   window.alert('Max 4 trackers. Please remove one before adding.');
-    //   return;
-    // }
-    // selectedTrackers.push(trackerId);
-    // setSelectedTrackers(selectedTrackers);
   };
 
-  useEffect(() => {
-    setSelectedTrackers(
-      trackers.map((tracker: any) => {
-        return Object.defineProperty(tracker, 'selected', {
-          value: false,
-          writable: true,
-        });
-      })
-    );
-  }, []);
+  // useEffect(() => {
+  //   setSelectedTrackers(trackers.slice(0, 3));
+  // }, []);
 
   return (
     <>
@@ -52,13 +43,16 @@ const AnalyticsBody = ({ trackers }: any) => {
             {trackers.map((tracker: any, index: any) => (
               <div
                 key={index}
-                // style={{
-                //   backgroundColor: tracker.selected ? '#22c55e' : '#3b82f6',
-                // }}
-                onClick={() => handleTrackerSelect(tracker._id)}
-                className={`${
-                  tracker.selected ? 'bg-secondary' : 'bg-accent'
-                } m-2 flex items-center justify-center h-12 w-24 rounded-xl hover:cursor-pointer`}
+                onClick={() => handleTrackerSelect(tracker)}
+                style={{
+                  backgroundColor:
+                    selectedTrackers.findIndex(
+                      (item: any) => item._id === tracker._id
+                    ) === -1
+                      ? '#3b82f6'
+                      : `${tracker.trackerColor}`,
+                }}
+                className="m-2 flex items-center justify-center h-12 w-24 rounded-xl hover:cursor-pointer"
               >
                 <h1 title={tracker.title} className="text-sm text-center">
                   {tracker.title.length >= 15
@@ -71,7 +65,7 @@ const AnalyticsBody = ({ trackers }: any) => {
         </div>
       </section>
       <section>
-        <AnalyticsMonth />
+        <AnalyticsMonth selectedTrackers={selectedTrackers} />
       </section>
     </>
   );

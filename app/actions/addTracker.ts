@@ -5,7 +5,7 @@ import Tracker from '@/models/Tracker';
 import { revalidatePath } from 'next/cache';
 import { getSessionUser } from '@/utils/getSessionUser';
 
-const addTracker = async (formData: FormData) => {
+const addTracker = async (trackerColor: string, formData: FormData) => {
   await connectDB();
 
   const sessionUser = await getSessionUser();
@@ -24,6 +24,7 @@ const addTracker = async (formData: FormData) => {
     owner: userId,
     title: titleLowerCase,
     subscribedDays: [],
+    trackerColor: trackerColor,
   };
 
   const newTracker = new Tracker(trackerData);

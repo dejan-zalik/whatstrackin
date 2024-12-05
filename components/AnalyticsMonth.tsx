@@ -8,7 +8,7 @@ import { useState, useEffect, useContext } from 'react';
 import { ChevronLeft, ChevronRight, LoaderCircle } from 'lucide-react';
 import { LoadingContext } from '@/context/LoadingContext';
 
-const AnalyticsMonth = () => {
+const AnalyticsMonth = ({ selectedTrackers }: any) => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
   const router = useRouter();
@@ -17,8 +17,7 @@ const AnalyticsMonth = () => {
   const dateToday = new Date().toLocaleDateString();
 
   const dayClassAttributes = 'w-11 md:w-14 m-0.5 text-sm pb-1';
-  const boxClassAttributes =
-    'h-11 w-11 md:h-14 md:w-14 m-0.5 hover:cursor-grab p-1 rounded-md';
+  const boxClassAttributes = 'h-11 w-11 md:h-14 md:w-14 m-0.5 rounded-md';
 
   const monthDayStart =
     new Date(selectedYear, selectedMonth - 1, 1).getDay() === 0
@@ -46,7 +45,8 @@ const AnalyticsMonth = () => {
               <ChevronLeft />
             </button>
             <div className="text-center underline my-auto">
-              {selectedMonth}/{selectedYear}
+              {selectedMonth < 10 ? '0' + selectedMonth : selectedMonth}/
+              {selectedYear}
             </div>
             <button
               onClick={() =>
@@ -68,7 +68,6 @@ const AnalyticsMonth = () => {
             <div className={dayClassAttributes}>Sat</div>
             <div className={dayClassAttributes}>Sun</div>
           </div>
-
           <div className="grid grid-cols-7 grid-rows-6 gap-0 w-fit">
             {selectedMonthArr.map((day, index) => (
               <div
@@ -77,14 +76,51 @@ const AnalyticsMonth = () => {
                 style={{
                   border: `${
                     new Date(
-                      `${selectedYear}-${selectedMonth}-${day}`
+                      `${selectedYear}-${
+                        selectedMonth < 10 ? '0' + selectedMonth : selectedMonth
+                      }-${day < 10 ? '0' + day : day}`
                     ).toLocaleDateString() === dateToday
                       ? 'dotted'
-                      : ''
+                      : day === 0
+                      ? ''
+                      : 'solid'
                   }`,
-                  backgroundColor: `${day === 0 ? '' : '#3b82f6'}`,
                 }}
-              ></div>
+              >
+                <div className="grid grid-cols-2 grid-rows-2 gap-0 w-full h-full">
+                  {day === 0
+                    ? ''
+                    : selectedTrackers.map((tracker: any) => (
+                        <div
+                          key={tracker._id}
+                          className={
+                            tracker.subscribedDays.includes(
+                              Date.parse(
+                                `${selectedYear}-${
+                                  selectedMonth < 10
+                                    ? '0' + selectedMonth
+                                    : selectedMonth
+                                }-${day < 10 ? '0' + day : day}`
+                              )
+                            ) &&
+                            'w-full h-full text-center content-center rounded-full'
+                          }
+                          style={{
+                            backgroundColor:
+                              tracker.subscribedDays.includes(
+                                Date.parse(
+                                  `${selectedYear}-${
+                                    selectedMonth < 10
+                                      ? '0' + selectedMonth
+                                      : selectedMonth
+                                  }-${day < 10 ? '0' + day : day}`
+                                )
+                              ) && tracker.trackerColor,
+                          }}
+                        ></div>
+                      ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>

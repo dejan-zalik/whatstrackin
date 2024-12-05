@@ -59,7 +59,10 @@ const TrackerMonth = ({ tracker }: any) => {
     <>
       <div className="flex justify-center">
         <div className="border rounded-md shadow-md p-3">
-          <h1 className="mb-3 font-bold text-lg text-center">
+          <h1
+            className="mb-3 font-bold text-lg text-center"
+            style={{ color: tracker.trackerColor }}
+          >
             {tracker.title}
           </h1>
           <div className="flex justify-evenly">

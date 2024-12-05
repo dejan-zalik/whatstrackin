@@ -12,6 +12,9 @@ const TrackerSchema = new Schema(
       required: [true, 'Title is required'],
     },
     subscribedDays: [],
+    trackerColor: {
+      type: String,
+    },
   },
   {
     timestamps: true,

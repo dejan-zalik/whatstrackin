@@ -41,7 +41,10 @@ const TrackerCard = ({ tracker }: any) => {
               setIsLoading(true);
             }}
           >
-            <div className="rounded-xl shadow-md bg-secondary hover:rounded-xl hover:shadow-2xl">
+            <div
+              className="rounded-xl shadow-md hover:rounded-xl hover:shadow-2xl"
+              style={{ backgroundColor: `${tracker.trackerColor}` }}
+            >
               <div className="p-4">
                 <div className="text-center my-3">
                   <h3 className="text-xl font-bold">{tracker.title}</h3>

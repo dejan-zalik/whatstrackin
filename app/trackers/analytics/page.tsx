@@ -32,15 +32,15 @@ const AnalyticsPage = async () => {
         </Link>
       </div>
 
-      {/* <AnalyticsBody trackers={trackers} /> */}
+      <AnalyticsBody trackers={trackers} />
 
-      <div className="relative flex justify-center">
+      {/* <div className="relative flex justify-center">
         <LoaderCircle
           size={180}
           className="absolute animate-spin text-green-500"
         />
         <h1 className="absolute top-20 text-green-500">coming soon...</h1>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Providers } from '@/context/Providers';
 import AuthProvider from '@/components/AuthProvider';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata: Metadata = {
   title: 'whatstrackin',
@@ -21,6 +22,7 @@ export default function RootLayout({
           <Providers>
             <Navbar />
             <main>{children}</main>
+            <ToastContainer autoClose={3000} />
           </Providers>
         </body>
       </html>
