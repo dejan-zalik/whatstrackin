@@ -31,9 +31,9 @@ const AnalyticsBody = ({ trackers }: any) => {
     });
   };
 
-  // useEffect(() => {
-  //   setSelectedTrackers(trackers.slice(0, 3));
-  // }, []);
+  useEffect(() => {
+    setSelectedTrackers(trackers.slice(0, 3));
+  }, []);
 
   return (
     <>
@@ -49,7 +49,7 @@ const AnalyticsBody = ({ trackers }: any) => {
                     selectedTrackers.findIndex(
                       (item: any) => item._id === tracker._id
                     ) === -1
-                      ? '#3b82f6'
+                      ? '#cccccc'
                       : `${tracker.trackerColor}`,
                 }}
                 className="m-2 flex items-center justify-center h-12 w-24 rounded-xl hover:cursor-pointer"

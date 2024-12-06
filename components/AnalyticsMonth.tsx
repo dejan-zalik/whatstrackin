@@ -1,18 +1,12 @@
 'use client';
 
-import addCalendarDay from '@/app/actions/addCalendarDay';
-import removeCalendarDay from '@/app/actions/removeCalendarDay';
-import { useRouter } from 'next/navigation';
 import generateMonth from '@/utils/generateMonth';
-import { useState, useEffect, useContext } from 'react';
-import { ChevronLeft, ChevronRight, LoaderCircle } from 'lucide-react';
-import { LoadingContext } from '@/context/LoadingContext';
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const AnalyticsMonth = ({ selectedTrackers }: any) => {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
-  const router = useRouter();
-  const { setIsLoading } = useContext(LoadingContext);
 
   const dateToday = new Date().toLocaleDateString();
 

@@ -128,8 +128,8 @@ const TrackerMonth = ({ tracker }: any) => {
                             }-${day < 10 ? '0' + day : day}`
                           )
                         )
-                      ? '#22c55e'
-                      : '#3b82f6'
+                      ? `${tracker.trackerColor}`
+                      : '#cccccc'
                   }`,
                   cursor: `${day === 0 ? '' : 'grab'}`,
                 }}

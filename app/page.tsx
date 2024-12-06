@@ -7,6 +7,7 @@ import LandingPageAnalyze from '@/components/LandingPageAnalyze';
 const LandingPage = () => {
   return (
     <>
+      <div className="mt-12 font-bold text-center">How it works:</div>
       <div className="container flex justify-center my-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <LandingPageCreate />

@@ -3,7 +3,7 @@ import { MousePointerClick, Plus, Trash2 } from 'lucide-react';
 const LandingPageCreate = () => {
   return (
     <div>
-      <h1 className="text-center underline italic">create</h1>
+      <h1 className="text-center font-bold mb-3">{`1) add your trackers`}</h1>
       <div className="w-full h-full rounded-md shadow-md">
         <div className="flex justify-center">
           <div className="relative">
@@ -20,7 +20,7 @@ const LandingPageCreate = () => {
             <button className="btn btn-circle text-red-500 absolute -right-5 -top-5 md:-right-4 md:-top-4">
               <Trash2 />
             </button>
-            <div className="rounded-xl shadow-md bg-secondary hover:rounded-xl hover:shadow-2xl hover:cursor-pointer">
+            <div className="rounded-xl shadow-md bg-[#87CEEB] hover:rounded-xl hover:shadow-2xl hover:cursor-pointer">
               <div className="p-2">
                 <div className="text-center my-3">
                   <h3 className="text-lg font-bold">exercise</h3>
@@ -34,7 +34,7 @@ const LandingPageCreate = () => {
             <button className="btn btn-circle text-red-500 absolute -right-5 -top-5 md:-right-4 md:-top-4">
               <Trash2 />
             </button>
-            <div className="rounded-xl shadow-md bg-secondary hover:rounded-xl hover:shadow-2xl hover:cursor-pointer">
+            <div className="rounded-xl shadow-md bg-[#f5b56b] hover:rounded-xl hover:shadow-2xl hover:cursor-pointer">
               <div className="p-2">
                 <div className="text-center my-3">
                   <h3 className="text-lg font-bold">headache</h3>
@@ -48,7 +48,7 @@ const LandingPageCreate = () => {
             <button className="btn btn-circle text-red-500 absolute -right-5 -top-5 md:-right-4 md:-top-4">
               <Trash2 />
             </button>
-            <div className="rounded-xl shadow-md bg-secondary hover:rounded-xl hover:shadow-2xl hover:cursor-pointer">
+            <div className="rounded-xl shadow-md bg-[#eaa2af] hover:rounded-xl hover:shadow-2xl hover:cursor-pointer">
               <div className="p-2">
                 <div className="text-center my-3">
                   <h3 className="text-lg font-bold">
