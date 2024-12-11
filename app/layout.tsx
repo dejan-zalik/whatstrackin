@@ -4,19 +4,22 @@ import Navbar from '@/components/Navbar';
 import { Providers } from '@/context/Providers';
 import AuthProvider from '@/components/AuthProvider';
 import { ToastContainer } from 'react-toastify';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/utils/authOptions';
 
 export const metadata: Metadata = {
   title: 'whatstrackin',
   description: "track yo' shit",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
   return (
-    <AuthProvider>
+    <AuthProvider session={session}>
       <html lang="en">
         <body className="max-w-3xl m-auto">
           <Providers>
