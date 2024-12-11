@@ -45,7 +45,7 @@ const EditTracker = ({ tracker }: any) => {
               }}
               className="btn btn-ghost shadow-md rounded-xl border font-bold"
             >
-              edit
+              apply
             </button>
           </div>
           <TrackerLoader />

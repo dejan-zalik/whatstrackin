@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import deleteTracker from '@/app/actions/deleteTracker';
 import { useContext } from 'react';
 import { LoadingContext } from '@/context/LoadingContext';
+import invert from 'invert-color';
 
 const TrackerCard = ({ tracker }: any) => {
   const router = useRouter();
@@ -47,7 +48,12 @@ const TrackerCard = ({ tracker }: any) => {
             >
               <div className="p-4">
                 <div className="text-center my-3">
-                  <h3 className="text-xl font-bold">{tracker.title}</h3>
+                  <h3
+                    className="text-xl font-bold"
+                    style={{ color: invert(tracker.trackerColor, true) }}
+                  >
+                    {tracker.title}
+                  </h3>
                 </div>
               </div>
             </div>

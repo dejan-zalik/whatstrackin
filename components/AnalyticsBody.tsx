@@ -3,6 +3,7 @@
 import AnalyticsMonth from '@/components/AnalyticsMonth';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import invert from 'invert-color';
 
 const AnalyticsBody = ({ trackers }: any) => {
   const [selectedTrackers, setSelectedTrackers] = useState<any>([]);
@@ -50,11 +51,22 @@ const AnalyticsBody = ({ trackers }: any) => {
                       (item: any) => item._id === tracker._id
                     ) === -1
                       ? '#cccccc'
-                      : `${tracker.trackerColor}`,
+                      : tracker.trackerColor,
                 }}
                 className="m-2 flex items-center justify-center h-12 w-24 rounded-xl hover:cursor-pointer"
               >
-                <h1 title={tracker.title} className="text-sm text-center">
+                <h1
+                  title={tracker.title}
+                  style={{
+                    color:
+                      selectedTrackers.findIndex(
+                        (item: any) => item._id === tracker._id
+                      ) === -1
+                        ? '#000'
+                        : invert(tracker.trackerColor, true),
+                  }}
+                  className="text-sm text-center"
+                >
                   {tracker.title.length >= 15
                     ? tracker.title.slice(0, 10) + '...'
                     : tracker.title}
